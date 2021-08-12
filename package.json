@@ -1,0 +1,23 @@
+{
+  "name": "lyrical",
+  "version": "1.0.0",
+  "description": "A really strange project for generating lyric-like artificial data from a learning model.",
+  "main": "main.js",
+  "scripts": {
+    "start": "node main.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ethanjurman/lyricAL.git"
+  },
+  "author": "Ethan Jurman",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ethanjurman/lyricAL/issues"
+  },
+  "homepage": "https://github.com/ethanjurman/lyricAL#readme",
+  "dependencies": {
+    "ml5": "^0.6.1"
+  }
+}
