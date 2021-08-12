@@ -3,6 +3,8 @@
 A really strange project for generating lyric-like artificial data from a
 learning model.
 
+for more info: https://github.com/ml5js/training-charRNN
+
 use test_enviro as source for python
 
 ```bash
