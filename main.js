@@ -1,17 +1,28 @@
-console.log('test');
+const modelPath = '/training-charRNN/models/songs/';
 
-// Create the character level generator with a pre trained model
-const rnn = ml5.charRNN('/training-charRNN/models/book1/', modelLoaded);
+const addStringToPage = (str) => {
+  const codeBlock = document.createElement('p');
+  codeBlock.innerText = str;
+  document.getElementById('results').appendChild(codeBlock);
+};
 
-// When the model is loaded
-function modelLoaded() {
-  console.log('Model Loaded!');
-}
+const generateResult = () => {
+  const seed = document.getElementById('seed').value;
+  const length = document.getElementById('length').value;
+  const temperature = document.getElementById('temperature').value;
+  // Generate content
+  const config = { seed, length, temperature };
+  const rnn = ml5.charRNN(modelPath, () => console.log('loaded'));
+  rnn.generate({ seed, length, temperature }, (err, results) => {
+    addStringToPage(JSON.stringify(config));
+    addStringToPage(results.sample);
+  });
+};
 
-// Generate content
-rnn.generate(
-  { seed: 'the meaning of life is', length: 1000, temperature: 1 },
-  (err, results) => {
-    console.log(results.sample);
-  },
-);
+window.generateResult = generateResult;
+
+const clearResults = () => {
+  document.getElementById('results').innerHTML = '';
+};
+
+window.clearResults = clearResults;

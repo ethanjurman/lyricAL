@@ -1,0 +1,22 @@
+{
+  "manifest_version": 2,
+
+  "name": "azlyrics-copier",
+  "description": "Chrome Extension that allows users to copy lyrics from AZLyrics",
+  "version": "1.0.0",
+
+  "content_scripts": [
+    {
+      "matches": ["https://www.azlyrics.com/*"],
+      "js": ["inject.js"]
+    }
+  ],
+
+  "web_accessible_resources": [
+    "copy.js"
+  ],
+
+  "permissions": [
+    "activeTab"
+  ]
+}
