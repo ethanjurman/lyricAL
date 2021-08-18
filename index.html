@@ -15,6 +15,11 @@
     <input id="seed" type="text" value="I would love to.">
     <input id="length" type="number" step="100" value="100">
     <input id="temperature" type="range" min="0" max="1" value="0.5" step="0.1">
+    <select id="model">
+      <option value="/songs_v1_model/">Songs V1</option>
+      <option value="/songs_v2_model/">Songs V2</option>
+      <option value="/songs_v3_model/">Songs V3</option>
+    </select>
     <button onclick="window.generateResult()">Generate Result</button>
     <button onclick="window.clearResults()">Clear Results</button>
     <section id="results">

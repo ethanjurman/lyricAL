@@ -5,6 +5,13 @@ learning model.
 
 for more info: https://github.com/ml5js/training-charRNN
 
+_A quick tip to concatenate many small disparate .txt files into one large
+training file:_
+
+```bash
+ls *.txt | xargs -L 1 cat >> input.txt
+```
+
 use test_enviro as source for python
 
 ```bash

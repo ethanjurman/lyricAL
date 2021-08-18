@@ -5,12 +5,13 @@ const lyrics = title.nextElementSibling.nextElementSibling.nextElementSibling;
 
 const noEmptyLines = (line) => line !== '';
 const unique = (line, index, lines) => lines.indexOf(line) === index;
+const noExtraDescriptors = (line) => !line.startsWith('[');
 const lines = lyrics.textContent
   .split('\n')
-  .filter(noEmptyLines)
-  .filter(unique)
+  .filter(noEmptyLines) // no empty lines
+  .filter(unique) // all lines must be unique
+  .filter(noExtraDescriptors) // no descriptor ([chorus, etc...])
   .join('\n');
-console.log(lines);
 
 const copyToClipboard = (text) => {
   const dummy = document.createElement('textarea');
