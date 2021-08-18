@@ -9,7 +9,7 @@ _A quick tip to concatenate many small disparate .txt files into one large
 training file:_
 
 ```bash
-ls *.txt | xargs -L 1 cat >> input.txt
+ls *.txt | xargs -L 1 cat >> songs.txt
 ```
 
 use test_enviro as source for python
