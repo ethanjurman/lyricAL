@@ -1,30 +1,89 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <title>Test</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- p5 -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.0.0/p5.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.0.0/addons/p5.sound.min.js"></script>
-    <!-- ml5 -->
-    <script src="https://unpkg.com/ml5@latest/dist/ml5.min.js"></script>
-    <script src="./main.js"></script>
-  </head>
 
-  <body>
-    <input id="seed" type="text" value="I would love to.">
-    <input id="length" type="number" step="100" value="100">
-    <input id="temperature" type="range" min="0" max="1" value="0.5" step="0.1">
-    <select id="model">
-      <option value="/songs_v1_model/">Songs V1</option>
-      <option value="/songs_v2_model/">Songs V2</option>
-      <option value="/songs_v3_model/">Songs V3</option>
-      <option value="/songs_v4_model/">Songs V4</option>
-      <option value="/songs_v5_model/">Songs V5</option>
-    </select>
-    <button onclick="window.generateResult()">Generate Result</button>
-    <button onclick="window.clearResults()">Clear Results</button>
-    <section id="results">
-    </section>
-  </body>
+<head>
+  <title>LyricAL</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- p5 -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.0.0/p5.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.0.0/addons/p5.sound.min.js"></script>
+  <!-- ml5 -->
+  <script src="https://unpkg.com/ml5@latest/dist/ml5.min.js"></script>
+  <script src="./main.js"></script>
+
+  <!-- Bootstrap -->
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+    crossorigin="anonymous"></script>
+
+  <!-- Bootswatch -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootswatch/4.5.1/cosmo/bootstrap.min.css">
+
+  <!-- FontAwesome -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+  <!-- Custom CSS -->
+  <style>
+    body {
+      max-width: 800px;
+      margin: auto auto;
+    }
+
+    [role="sub-header"] {
+      font-size: medium;
+      display: block;
+    }
+  </style>
+</head>
+
+<body>
+  <h1>
+    LyricAL
+    <span role="sub-header">Lyric Artifical Learning. A really strange project for generating lyric-like artificial
+      data from a learning model.
+    </span>
+  </h1>
+  <form>
+
+    <fieldset class="form-group">
+      <label type="form-label" for="seed">Seed</label>
+      <input id="seed" class="form-control" type="text" value="" placeholder="seed (optional)">
+    </fieldset>
+
+    <fieldset class="form-group">
+      <label type="form-label" for="length">Length</label>
+      <input id="length" class="form-control" type="number" step="100" value="100" placeholder="length">
+    </fieldset>
+
+    <fieldset class="form-group">
+      <label type="form-label" for="temperature">Temperature</label>
+      <input id="temperature" class="form-control-range" type="range" min="0" max="1" value="0.5" step="0.1">
+    </fieldset>
+
+    <fieldset class="form-group">
+      <label type="form-label" for="model">Model Select</label>
+      <select id="model" class="form-select">
+        <option value="/songs_v1_model/">Songs V1</option>
+        <option value="/songs_v2_model/">Songs V2</option>
+        <option value="/songs_v3_model/">Songs V3</option>
+        <option value="/songs_v4_model/">Songs V4</option>
+        <option value="/songs_v5_model/" selected>Songs V5</option>
+      </select>
+    </fieldset>
+
+  </form>
+  <br />
+  <button type="button" class="btn btn-primary" onclick="window.generateResult()">Generate Result</button>
+  <button type="button" class="btn btn-warning" onclick="window.clearResults()">Clear Results</button>
+
+  <section id="results">
+  </section>
+</body>
+
 </html>

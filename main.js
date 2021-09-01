@@ -1,10 +1,16 @@
-const modelRNNs = {};
+const modelRNNsCache = {};
 
 const getModelRNN = (modelPath) => {
-  if (!modelRNNs[modelPath]) {
-    modelRNNs[modelPath] = ml5.charRNN(modelPath, () => console.log('loaded'));
+  if (window.location.href.match(/localhost/)) {
+    // do nothing
+  } else {
+    modelPath = `/lyricAL/${modelPath}`
   }
-  return modelRNNs[modelPath];
+
+  if (!modelRNNsCache[modelPath]) {
+    modelRNNsCache[modelPath] = ml5.charRNN(modelPath, () => console.log('loaded'));
+  }
+  return modelRNNsCache[modelPath];
 };
 
 const addStringToPage = (str) => {
