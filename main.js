@@ -25,7 +25,7 @@ const generateResult = () => {
   const temperature = document.getElementById('temperature').value;
   const modelPath = document.getElementById('model').value;
   // Generate content
-  addStringToPage('generating');
+  addStringToPage('generating (this can take a bit, but should finish under a minute)');
   const config = { modelPath, seed, length, temperature };
   const rnn = getModelRNN(modelPath);
   rnn.generate({ seed, length, temperature }, (err, results) => {
