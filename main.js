@@ -4,11 +4,13 @@ const getModelRNN = (modelPath) => {
   if (window.location.href.match(/localhost/)) {
     // do nothing
   } else {
-    modelPath = `/lyricAL/${modelPath}`
+    modelPath = `/lyricAL/${modelPath}`;
   }
 
   if (!modelRNNsCache[modelPath]) {
-    modelRNNsCache[modelPath] = ml5.charRNN(modelPath, () => console.log('loaded'));
+    modelRNNsCache[modelPath] = ml5.charRNN(modelPath, () =>
+      console.log('loaded'),
+    );
   }
   return modelRNNsCache[modelPath];
 };
@@ -20,17 +22,19 @@ const addStringToPage = (str) => {
 };
 
 const generateResult = () => {
-  const seed = document.getElementById('seed').value;
+  const seed = document.getElementById('seed').value || '\n';
   const length = document.getElementById('length').value;
   const temperature = document.getElementById('temperature').value;
   const modelPath = document.getElementById('model').value;
   // Generate content
-  addStringToPage('generating (this can take a bit, but should finish under a minute)');
+  addStringToPage(
+    'generating (this can take a bit, but should finish under a minute)',
+  );
   const config = { modelPath, seed, length, temperature };
   const rnn = getModelRNN(modelPath);
   rnn.generate({ seed, length, temperature }, (err, results) => {
     addStringToPage(JSON.stringify(config));
-    addStringToPage(results.sample);
+    addStringToPage(seed + results.sample);
   });
 };
 

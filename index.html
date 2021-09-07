@@ -31,8 +31,18 @@
   <!-- Custom CSS -->
   <style>
     body {
-      max-width: 800px;
+      max-width: 848px;
       margin: auto auto;
+    }
+
+    h1, form, section {
+      margin: 0px 24px 16px;
+    }
+
+    [role="subtitle"] {
+      display:block;
+      font-size: small;
+      color: gray;
     }
 
     [role="sub-header"] {
@@ -55,17 +65,23 @@
   <form>
 
     <fieldset class="form-group">
-      <label type="form-label" for="seed">Seed</label>
+      <label type="form-label" for="seed">Seed
+        <span role="subtitle">This is placed at the beginning of the generated text.</span>
+      </label>
       <input id="seed" class="form-control" type="text" value="" placeholder="seed (optional)">
     </fieldset>
 
     <fieldset class="form-group">
-      <label type="form-label" for="length">Length</label>
+      <label type="form-label" for="length">Length
+        <span role="subtitle">How long the generated text is (in characters)</span>
+      </label>
       <input id="length" class="form-control" type="number" step="100" value="500" placeholder="length">
     </fieldset>
 
     <fieldset class="form-group">
-      <label type="form-label" for="temperature">Temperature</label>
+      <label type="form-label" for="temperature">Temperature
+        <span role="subtitle">Used to adjust how the data model should treat words vs neighbors. Adjusting this can cause misspellings.</span>
+      </label>
       <input id="temperature" class="form-control-range" type="range" min="0" max="1" value="0.5" step="0.1">
     </fieldset>
 
@@ -82,8 +98,11 @@
 
   </form>
   <br />
-  <button type="button" class="btn btn-primary" onclick="window.generateResult()">Generate Result</button>
-  <button type="button" class="btn btn-warning" onclick="window.clearResults()">Clear Results</button>
+
+  <section id="buttons">
+    <button type="button" class="btn btn-primary" onclick="window.generateResult()">Generate Result</button>
+    <button type="button" class="btn btn-warning" onclick="window.clearResults()">Clear Results</button>
+  </section>
 
   <section id="results">
   </section>
