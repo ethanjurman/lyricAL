@@ -15,9 +15,10 @@ const getModelRNN = (modelPath) => {
   return modelRNNsCache[modelPath];
 };
 
-const addStringToPage = (str) => {
+const addStringToPage = (str, style) => {
   const codeBlock = document.createElement('p');
   codeBlock.innerText = str;
+  codeBlock.style.cssText = style;
   document.getElementById('results').appendChild(codeBlock);
 };
 
@@ -29,11 +30,12 @@ const generateResult = () => {
   // Generate content
   addStringToPage(
     'generating (this can take a bit, but should finish under a minute)',
+    'color: gray;',
   );
   const config = { modelPath, seed, length, temperature };
   const rnn = getModelRNN(modelPath);
   rnn.generate({ seed, length, temperature }, (err, results) => {
-    addStringToPage(JSON.stringify(config));
+    addStringToPage(JSON.stringify(config), 'color: gray;');
     addStringToPage(seed + results.sample);
   });
 };
