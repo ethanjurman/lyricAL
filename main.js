@@ -40,6 +40,11 @@ const generateResult = () => {
   });
 };
 
+window.onload = () => {
+  const rnn = getModelRNN(document.getElementById('model').value);
+  rnn.generate({ seed: '\n', length: 6, temperature: 0.5 });
+};
+
 window.generateResult = generateResult;
 
 const clearResults = () => {
